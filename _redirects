@@ -1,0 +1,18 @@
+/home / 301
+/about /about.html 301
+/contact /contact.html 301
+/privacy-policy /privacy-policy.html 301
+/disclaimer /disclaimer.html 301
+/terms /terms.html 301
+/editorial-policy /editorial-policy.html 301
+/articles /posts/articles.html 301
+/feed /rss.xml 301
+/sitemap /sitemap.xml 301
+/robots /robots.txt 301
+/ads /ads.txt 301
+/manifest /site.webmanifest 301
+
+# Article index redirects (serve index.html for clean URLs)
+/posts/article-1 /posts/article-1/ 301
+/posts/article-2 /posts/article-2/ 301
+/posts/article-3 /posts/article-3/ 301

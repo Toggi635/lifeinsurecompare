@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Sitemap: https://lifeinsurecompare.com/sitemap.xml
+
+# Disallow admin/internal paths
+Disallow: /assets/
+
+# Crawl delay for polite crawling
+Crawl-delay: 10

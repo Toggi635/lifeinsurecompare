@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>LifeInsureCompare - Life Insurance Guides &amp; Comparisons</title>
+    <link>https://lifeinsurecompare.com/</link>
+    <description>Expert life insurance comparison guides, policy analysis, and company reviews to help families find affordable coverage. Written by Jennifer Walsh.</description>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Jun 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://lifeinsurecompare.com/rss.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>https://lifeinsurecompare.com/favicon.png</url>
+      <title>LifeInsureCompare</title>
+      <link>https://lifeinsurecompare.com/</link>
+    </image>
+
+    <item>
+      <title>Term Life vs Whole Life: Which Policy Is Right for You?</title>
+      <link>https://lifeinsurecompare.com/posts/article-1/</link>
+      <guid>https://lifeinsurecompare.com/posts/article-1/</guid>
+      <pubDate>Fri, 20 Jun 2026 00:00:00 +0000</pubDate>
+      <description>A comprehensive comparison of term life and whole life insurance policies, including cost analysis, pros and cons, and guidance on choosing the right coverage for your family.</description>
+      <category>Life Insurance</category>
+      <author>contact@lifeinsurecompare.com (Jennifer Walsh)</author>
+    </item>
+
+    <item>
+      <title>How Much Life Insurance Do You Really Need?</title>
+      <link>https://lifeinsurecompare.com/posts/article-2/</link>
+      <guid>https://lifeinsurecompare.com/posts/article-2/</guid>
+      <pubDate>Fri, 20 Jun 2026 00:00:00 +0000</pubDate>
+      <description>A step-by-step guide to calculating the right amount of life insurance coverage using the DIME method and other industry-standard approaches for various life stages.</description>
+      <category>Life Insurance</category>
+      <category>Coverage Guide</category>
+      <author>contact@lifeinsurecompare.com (Jennifer Walsh)</author>
+    </item>
+
+    <item>
+      <title>Best Life Insurance Companies 2026: Rates and Reviews Compared</title>
+      <link>https://lifeinsurecompare.com/posts/article-3/</link>
+      <guid>https://lifeinsurecompare.com/posts/article-3/</guid>
+      <pubDate>Fri, 20 Jun 2026 00:00:00 +0000</pubDate>
+      <description>A detailed comparison of the best life insurance companies in 2026, including term life rates, financial strength ratings, customer satisfaction scores, and policy features.</description>
+      <category>Life Insurance</category>
+      <category>Company Reviews</category>
+      <author>contact@lifeinsurecompare.com (Jennifer Walsh)</author>
+    </item>
+  </channel>
+</rss>
