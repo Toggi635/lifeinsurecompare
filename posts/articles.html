@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <base href='/lifeinsurecompare/'>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>All Articles - Life Insurance Comparison Guides | LifeInsureCompare</title>
@@ -21,18 +22,18 @@
   <meta name="twitter:description" content="Browse all life insurance articles from LifeInsureCompare.">
   <meta name="twitter:image" content="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&h=630&fit=crop">
 
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="/favicon.png" type="image/png">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.svg">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.svg">
+  <link rel="manifest" href="site.webmanifest">
 
   <link rel="preconnect" href="https://pagead2.googlesyndication.com">
   <link rel="preconnect" href="https://images.unsplash.com">
   <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
   <link rel="dns-prefetch" href="https://images.unsplash.com">
 
-  <link rel="preload" href="../css/style.css" as="style">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="preload" href="css/style.css" as="style">
+  <link rel="stylesheet" href="css/style.css">
 
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}:root{--primary:#1a2a5c;--primary-dark:#0e1a3d;--primary-light:#2a4078;--accent:#c1922e;--accent-hover:#a67c25;--text:#1e293b;--text-light:#64748b;--bg:#f8fafc;--white:#ffffff;--border:#e2e8f0;--shadow:0 1px 3px rgba(0,0,0,0.1);--shadow-lg:0 10px 30px rgba(0,0,0,0.08);--radius:12px;--radius-sm:8px;--max-width:1200px;--header-height:70px}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.6;min-height:100vh;display:flex;flex-direction:column}a{color:var(--accent);text-decoration:none;transition:color 0.2s}a:hover{color:var(--accent-hover)}img{max-width:100%;height:auto;display:block}.container{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 24px}.header{background:var(--primary-dark);color:var(--white);height:var(--header-height);display:flex;align-items:center;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.15)}.header .container{display:flex;align-items:center;justify-content:space-between}.logo{font-size:1.35rem;font-weight:700;letter-spacing:-0.5px;color:var(--white)}.logo:hover{color:var(--white);opacity:0.9}.logo span{color:var(--accent)}.nav{display:flex;align-items:center;gap:24px}.nav a{color:rgba(255,255,255,0.85);font-size:0.9rem;font-weight:500;transition:color 0.2s}.nav a:hover{color:var(--white)}.page-header{background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 50%,var(--primary-light) 100%);color:var(--white);padding:60px 0 48px;text-align:center}.page-header h1{font-size:2.2rem;font-weight:800;line-height:1.2;margin-bottom:12px;letter-spacing:-1px}.page-header p{font-size:1.1rem;opacity:0.9;max-width:600px;margin:0 auto}.articles{padding:32px 0 64px}.articles h2{font-size:1.5rem;font-weight:700;margin-bottom:24px;color:var(--primary)}.articles-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:24px}.article-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform 0.2s,box-shadow 0.2s;display:flex;flex-direction:column}.article-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}.article-card img{width:100%;height:200px;object-fit:cover}.article-card-body{padding:20px;flex:1;display:flex;flex-direction:column}.article-card-body .category{display:inline-block;background:var(--accent);color:var(--white);font-size:0.7rem;font-weight:600;padding:3px 10px;border-radius:20px;margin-bottom:10px;width:fit-content}.article-card-body h3{font-size:1.1rem;font-weight:700;margin-bottom:8px;color:var(--primary-dark)}.article-card-body h3 a{color:inherit}.article-card-body h3 a:hover{color:var(--accent)}.article-card-body p{font-size:0.88rem;color:var(--text-light);line-height:1.6;flex:1}.article-card-body .date{font-size:0.78rem;color:var(--text-light);margin-top:12px}.ad-container{width:100%;margin:30px auto;padding:5px;text-align:center;overflow:hidden;border:1px solid #e5e5e5;background:#fafafa;border-radius:10px;max-height:90px}.ad-label{font-size:11px;text-transform:uppercase;color:#888;margin-bottom:8px;display:block}
@@ -58,11 +59,11 @@
 <body>
   <header class="header">
     <div class="container">
-      <a href="/" class="logo">Life<span>Insure</span>Compare</a>
+      <a href="." class="logo">Life<span>Insure</span>Compare</a>
       <nav class="nav">
-        <a href="/">Home</a>
-        <a href="/posts/articles.html">Articles</a>
-        <a href="/posts/articles.html">All Posts</a>
+        <a href=".">Home</a>
+        <a href="posts/articles.html">Articles</a>
+        <a href="posts/articles.html">All Posts</a>
       </nav>
     </div>
   </header>
@@ -95,36 +96,36 @@
       <div class="articles-grid" id="articlesGrid">
 
         <article class="article-card">
-          <a href="/posts/article-1/">
+          <a href="posts/article-1/">
             <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&h=600&fit=crop" alt="Family reviewing life insurance documents" loading="lazy" width="600" height="400">
           </a>
           <div class="article-card-body">
             <span class="category">Life Insurance</span>
-            <h3><a href="/posts/article-1/">Term Life vs Whole Life: Which Policy Is Right for You?</a></h3>
+            <h3><a href="posts/article-1/">Term Life vs Whole Life: Which Policy Is Right for You?</a></h3>
             <p>Compare term life and whole life insurance policies. Learn about costs, benefits, cash value, and how to choose the right coverage for your family's needs.</p>
             <span class="date">January 15, 2026</span>
           </div>
         </article>
 
         <article class="article-card">
-          <a href="/posts/article-2/">
+          <a href="posts/article-2/">
             <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&h=600&fit=crop" alt="Calculator and financial planning documents" loading="lazy" width="600" height="400">
           </a>
           <div class="article-card-body">
             <span class="category">Coverage Guide</span>
-            <h3><a href="/posts/article-2/">How Much Life Insurance Do You Really Need?</a></h3>
+            <h3><a href="posts/article-2/">How Much Life Insurance Do You Really Need?</a></h3>
             <p>Calculate the right amount of life insurance coverage for your family. Learn about income replacement, debt coverage, future expenses, and the DIME method.</p>
             <span class="date">February 14, 2026</span>
           </div>
         </article>
 
         <article class="article-card">
-          <a href="/posts/article-3/">
+          <a href="posts/article-3/">
             <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&h=600&fit=crop" alt="Comparison chart showing top life insurance companies" loading="lazy" width="600" height="400">
           </a>
           <div class="article-card-body">
             <span class="category">Company Reviews</span>
-            <h3><a href="/posts/article-3/">Best Life Insurance Companies 2026: Rates and Reviews Compared</a></h3>
+            <h3><a href="posts/article-3/">Best Life Insurance Companies 2026: Rates and Reviews Compared</a></h3>
             <p>Compare the top life insurance companies of 2026. Side-by-side rates, financial strength ratings, customer reviews, and policy features reviewed.</p>
             <span class="date">March 21, 2026</span>
           </div>
@@ -152,21 +153,21 @@
   <footer class="footer" role="contentinfo">
     <div class="container">
       <div class="footer-links">
-        <a href="/">Home</a>
-        <a href="/about.html">About</a>
-        <a href="/contact.html">Contact</a>
-        <a href="/privacy-policy.html">Privacy Policy</a>
-        <a href="/disclaimer.html">Disclaimer</a>
-        <a href="/terms.html">Terms of Use</a>
-        <a href="/editorial-policy.html">Editorial Policy</a>
-        <a href="/posts/articles.html">All Articles</a>
-        <a href="/rss.xml">RSS</a>
-        <a href="/sitemap.xml">Sitemap</a>
+        <a href=".">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="editorial-policy.html">Editorial Policy</a>
+        <a href="posts/articles.html">All Articles</a>
+        <a href="rss.xml">RSS</a>
+        <a href="sitemap.xml">Sitemap</a>
       </div>
-      <p>&copy; 2026 <a href="/">LifeInsureCompare</a>. For informational purposes only. Consult a licensed insurance professional.</p>
+      <p>&copy; 2026 <a href=".">LifeInsureCompare</a>. For informational purposes only. Consult a licensed insurance professional.</p>
     </div>
   </footer>
 
-  <script src="../js/main.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

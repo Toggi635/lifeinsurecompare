@@ -4,7 +4,7 @@ const articles = [
     title: "Term Life vs Whole Life: Which Policy Is Right for You?",
     excerpt: "Compare term life and whole life insurance policies. Learn about costs, benefits, cash value, and how to choose the right coverage for your family's needs.",
     category: "Life Insurance",
-    url: "/posts/article-1/",
+    url: "posts/article-1/",
     image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&h=600&fit=crop",
     alt: "Family reviewing life insurance documents together",
     date: "January 15, 2026"
@@ -14,7 +14,7 @@ const articles = [
     title: "How Much Life Insurance Do You Really Need?",
     excerpt: "Calculate the right amount of life insurance coverage for your family. Learn about income replacement, debt coverage, future expenses, and the DIME method.",
     category: "Coverage Guide",
-    url: "/posts/article-2/",
+    url: "posts/article-2/",
     image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&h=600&fit=crop",
     alt: "Calculator and financial planning documents on a desk",
     date: "February 14, 2026"
@@ -24,7 +24,7 @@ const articles = [
     title: "Best Life Insurance Companies 2026: Rates and Reviews Compared",
     excerpt: "Compare the top life insurance companies of 2026. Side-by-side rates, financial strength ratings, customer reviews, and policy features reviewed.",
     category: "Company Reviews",
-    url: "/posts/article-3/",
+    url: "posts/article-3/",
     image: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&h=600&fit=crop",
     alt: "Comparison chart showing top life insurance companies",
     date: "March 21, 2026"
