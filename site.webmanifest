@@ -2,18 +2,18 @@
   "name": "LifeInsureCompare",
   "short_name": "LifeInsureCmp",
   "description": "Life insurance comparison guides and resources to help families find affordable coverage.",
-  "start_url": "/",
+  "start_url": "/lifeinsurecompare/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#1a2a5c",
   "icons": [
     {
-      "src": "/favicon.png",
+      "src": "favicon.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "/favicon.png",
+      "src": "favicon.png",
       "sizes": "512x512",
       "type": "image/png"
     }
