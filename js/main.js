@@ -2979,6 +2979,26 @@
     alt: "Life Insurance Conversion Options: Term to Permanent Guide",
     date: "December 31, 2026"
   },
+  {
+    id: 299,
+    title: "Life Insurance Tax Implications: Are Death Benefits Taxable?",
+    excerpt: "Complete guide to life insurance tax implications. Learn whether death benefits are taxable, how cash value growth is treated, and strategies to minimize tax exposure.",
+    category: "Financial Planning",
+    url: "posts/life-insurance-tax-implications-benefits/",
+    image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1200&h=600&fit=crop",
+    alt: "Life Insurance Tax Implications: Are Death Benefits Taxable?",
+    date: "December 30, 2026"
+  },
+  {
+    id: 300,
+    title: "Life Insurance Policy Review Checklist: Annual Coverage Checkup",
+    excerpt: "Annual life insurance policy review checklist. Learn how to evaluate your coverage, compare rates, update beneficiaries, and ensure your policy still meets your needs.",
+    category: "Life Insurance",
+    url: "posts/life-insurance-policy-review-checklist/",
+    image: "https://images.unsplash.com/photo-1434626881859-194d67b2b95f?w=1200&h=600&fit=crop",
+    alt: "Life Insurance Policy Review Checklist: Annual Coverage Checkup",
+    date: "December 31, 2026"
+  },
 ];
 
 document.addEventListener('DOMContentLoaded', function() {
