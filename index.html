@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <base href='/lifeinsurecompare/'>
@@ -100,7 +100,7 @@
         "name": "Can I have multiple life insurance policies?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, you can have multiple life insurance policies. Many people layer policies â€” for example, a 30-year term to cover mortgage and child-rearing years, plus a smaller 10-year policy for shorter-term obligations."
+          "text": "Yes, you can have multiple life insurance policies. Many people layer policies — for example, a 30-year term to cover mortgage and child-rearing years, plus a smaller 10-year policy for shorter-term obligations."
         }
       },
       {
@@ -121,10 +121,10 @@
   <header class="header">
     <div class="container">
       <a href="." class="logo">Life<span>Insure</span>Compare</a>
-      <nav class="nav" role="navigation" aria-label="Main navigation">
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">?</button>
+      <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
         <a href=".">Home</a>
         <a href="posts/articles.html">Articles</a>
-        <a href="posts/articles.html">Browse All</a>
         <a href="about.html">About</a>
       </nav>
     </div>
@@ -133,11 +133,12 @@
   <section class="hero">
     <div class="container">
       <h1>Compare Life Insurance with Confidence</h1>
-      <p>Clear, practical life insurance guides to help you find the right coverage at the best price â€” whether you're buying term life, whole life, or comparing top providers. Expert resources reviewed by our team.</p>
+      <p>Clear, practical life insurance guides to help you find the right coverage at the best price — whether you're buying term life, whole life, or comparing top providers. Expert resources reviewed by our team.</p>
       <div class="search-bar">
         <input type="text" id="searchInput" placeholder="Search articles..." aria-label="Search articles">
         <button id="searchBtn">Search</button>
       </div>
+      <div class="search-stats" id="searchStats"></div>
     </div>
   </section>
 
@@ -155,10 +156,51 @@
       </script>
     </div>
   </div>
+    </div>
+  </div>
 
+  <section class="categories-section" id="categories">
+    <div class="container">
+      <div class="section-header">
+        <h2>Browse by Category</h2>
+      </div>
+      <div class="categories-grid" id="categoriesGrid"></div>
+    </div>
+  </section>
+
+  <section class="featured" id="featured">
+    <div class="container">
+      <div class="section-header">
+        <h2>Featured Article</h2>
+        <a href="posts/articles.html" class="section-link">View All</a>
+      </div>
+      <a href="posts/article-1/" class="featured-card">
+        <img class="featured-card-img" src="" alt="Featured Article" loading="lazy" width="380" height="240">
+        <div class="featured-card-body">
+          <span class="category"></span>
+          <h3></h3>
+          <p></p>
+          <div class="meta">
+            <span></span>
+            <span>�</span>
+            <span class="reading-time"></span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+  <section class="trending" id="trending">
+    <div class="container">
+      <div class="section-header">
+        <h2>Popular Articles</h2>
+        <a href="posts/articles.html" class="section-link">Browse All</a>
+      </div>
+      <div class="trending-grid" id="trendingGrid"></div>
+    </div>
+  </section>
   <section class="articles" id="articles">
     <div class="container">
-      <h2>All Articles</h2>
+      <div class="section-header"><h2>All Articles</h2><span class="search-stats" id="searchStats"></span></div>
       <div class="articles-grid" id="articlesGrid"></div>
     </div>
   </section>
@@ -185,7 +227,7 @@
         </div>
         <div class="faq-item">
           <h3>Can I have multiple policies?</h3>
-          <p>Yes, you can have multiple life insurance policies. Many people layer policies â€” for example, a 30-year term to cover mortgage and child-rearing years, plus a smaller policy for shorter-term needs.</p>
+          <p>Yes, you can have multiple life insurance policies. Many people layer policies — for example, a 30-year term to cover mortgage and child-rearing years, plus a smaller policy for shorter-term needs.</p>
         </div>
         <div class="faq-item">
           <h3>When should I buy life insurance?</h3>
@@ -210,10 +252,11 @@
     </div>
   </div>
 
+  <button class="scroll-top" id="scrollTop" aria-label="Scroll to top">?</button>
   <footer class="footer" role="contentinfo">
     <div class="container">
+      <div class="footer-brand">LifeInsureCompare</div>
       <div class="footer-links">
-        <a href=".">Home</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
         <a href="privacy-policy.html">Privacy Policy</a>
@@ -221,14 +264,15 @@
         <a href="terms.html">Terms of Use</a>
         <a href="editorial-policy.html">Editorial Policy</a>
         <a href="posts/articles.html">All Articles</a>
-        <a href="rss.xml">RSS</a>
+        <a href="rss.xml">RSS Feed</a>
         <a href="sitemap.xml">Sitemap</a>
       </div>
-      <p>&copy; 2026 <a href=".">LifeInsureCompare</a>. For informational purposes only. Consult a licensed insurance professional.</p>
+      <p>&copy; 2026 LifeInsureCompare. For informational purposes only.</p>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
 </body>
 </html>
+
 

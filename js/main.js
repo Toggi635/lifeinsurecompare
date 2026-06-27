@@ -2999,57 +2999,263 @@
     alt: "Life Insurance Policy Review Checklist: Annual Coverage Checkup",
     date: "December 31, 2026"
   },
-];
+]
+// === CATEGORY HELPERS ===
+function getCategories() {
+  const cats = {};
+  articles.forEach(a => {
+    cats[a.category] = (cats[a.category] || 0) + 1;
+  });
+  return Object.entries(cats).sort((a,b) => b[1] - a[1]);
+}
 
+function getReadingTime(text) {
+  const wpm = 200;
+  const words = text.split(/\s+/).length;
+  return Math.max(1, Math.ceil(words / wpm));
+}
+
+function getTrendingArticles(count) {
+  return [...articles].sort((a,b) => {
+    const aWords = a.excerpt.split(/\s+/).length;
+    const bWords = b.excerpt.split(/\s+/).length;
+    return bWords - aWords;
+  }).slice(0, count);
+}
+
+function getRelatedArticles(article, count) {
+  const sameCat = articles.filter(a => a.id !== article.id && a.category === article.category);
+  if (sameCat.length >= count) return sameCat.slice(0, count);
+  const others = articles.filter(a => a.id !== article.id && a.category !== article.category);
+  return [...sameCat, ...others].slice(0, count);
+}
+
+function fuzzyMatch(text, query) {
+  const q = query.toLowerCase().trim();
+  const t = text.toLowerCase();
+  if (t.includes(q)) return true;
+  let qi = 0;
+  for (let i = 0; i < t.length && qi < q.length; i++) {
+    if (t[i] === q[qi]) qi++;
+  }
+  return qi === q.length && q.length > 2;
+}
+
+function highlightText(text, query) {
+  if (!query || !query.trim()) return text;
+  const q = query.trim();
+  const idx = text.toLowerCase().indexOf(q.toLowerCase());
+  if (idx === -1) return text;
+  return text.slice(0, idx) + '<mark>' + text.slice(idx, idx + q.length) + '</mark>' + text.slice(idx + q.length);
+}
+
+// === RENDER CATEGORIES ===
+function renderCategories() {
+  const grid = document.getElementById('categoriesGrid');
+  if (!grid) return;
+  const cats = getCategories();
+  grid.innerHTML = cats.map(([c, count]) =>
+    `<button class="category-pill" data-category="${c}" onclick="filterByCategory('${c}')" aria-label="Filter by ${c}">
+      ${c} <span class="count">${count}</span>
+    </button>`
+  ).join('');
+  // Add "All" button at the beginning
+  grid.insertAdjacentHTML('afterbegin', `<button class="category-pill active" data-category="all" onclick="filterByCategory('all')" aria-label="Show all articles">All <span class="count">${articles.length}</span></button>`);
+}
+
+// === RENDER TRENDING ===
+function renderTrending() {
+  const grid = document.getElementById('trendingGrid');
+  if (!grid) return;
+  const trending = getTrendingArticles(6);
+  grid.innerHTML = trending.map((a, i) => `
+    <a href="${a.url}" class="trending-card">
+      <div class="rank">${String(i + 1).padStart(2, '0')}</div>
+      <div class="trending-card-body">
+        <h3>${a.title}</h3>
+        <div class="trending-meta">
+          <span>${a.category}</span>
+          <span>·</span>
+          <span>${a.date}</span>
+        </div>
+      </div>
+    </a>
+  `).join('');
+}
+
+// === RENDER ARTICLES (IMPROVED) ===
+function renderArticles(articlesToRender, query) {
+  const grid = document.getElementById('articlesGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  if (!articlesToRender || articlesToRender.length === 0) {
+    grid.innerHTML = `
+      <div class="no-results">
+        <h3>No articles found</h3>
+        <p>Try a different search term or browse by category</p>
+        <div class="suggestions">
+          <a href="." onclick="filterByCategory('all');return false">Browse all articles</a>
+          ${getCategories().slice(0, 5).map(([c]) => `<a href="." onclick="filterByCategory('${c}');return false">${c}</a>`).join('')}
+        </div>
+      </div>`;
+    return;
+  }
+  articlesToRender.forEach(article => {
+    const card = document.createElement('article');
+    card.className = 'article-card';
+    const readingTime = getReadingTime(article.excerpt + ' ' + article.title);
+    const displayTitle = query ? highlightText(article.title, query) : article.title;
+    const displayExcerpt = query ? highlightText(article.excerpt, query) : article.excerpt;
+    card.innerHTML = `
+      <a href="${article.url}" tabindex="-1" aria-hidden="true">
+        <img class="card-img" src="${article.image}" alt="${article.alt}" loading="lazy" width="600" height="400">
+      </a>
+      <div class="article-card-body">
+        <span class="card-category">${article.category}</span>
+        <h3><a href="${article.url}">${displayTitle}</a></h3>
+        <p>${displayExcerpt}</p>
+        <div class="card-meta">
+          <span>${article.date}</span>
+          <span>·</span>
+          <span>${readingTime} min read</span>
+        </div>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+// === SEARCH ===
+function filterArticles(query) {
+  const q = query.toLowerCase().trim();
+  if (!q) return articles;
+  return articles.filter(article =>
+    fuzzyMatch(article.title, q) ||
+    fuzzyMatch(article.excerpt, q) ||
+    fuzzyMatch(article.category, q)
+  );
+}
+
+function filterByCategory(category) {
+  const pills = document.querySelectorAll('.category-pill');
+  pills.forEach(p => p.classList.remove('active'));
+  const active = document.querySelector(`.category-pill[data-category="${category}"]`);
+  if (active) active.classList.add('active');
+  const filtered = category === 'all' ? articles : articles.filter(a => a.category === category);
+  renderArticles(filtered);
+  const stats = document.getElementById('searchStats');
+  if (stats) stats.textContent = `Showing ${filtered.length} article${filtered.length !== 1 ? 's' : ''}`;
+}
+
+function performSearch() {
+  const input = document.getElementById('searchInput');
+  if (!input) return;
+  const query = input.value;
+  const filtered = filterArticles(query);
+  renderArticles(filtered, query);
+  const stats = document.getElementById('searchStats');
+  if (stats) {
+    if (query.trim()) {
+      stats.textContent = `Found ${filtered.length} result${filtered.length !== 1 ? 's' : ''} for "${query}"`;
+    } else {
+      stats.textContent = `Showing all ${filtered.length} articles`;
+    }
+  }
+  // Reset category pills when searching
+  const pills = document.querySelectorAll('.category-pill');
+  pills.forEach(p => p.classList.remove('active'));
+  const allPill = document.querySelector('.category-pill[data-category="all"]');
+  if (allPill) allPill.classList.add('active');
+}
+
+// === RELATED ARTICLES ===
+function renderRelated(articleId) {
+  const grid = document.getElementById('relatedGrid');
+  if (!grid) return;
+  const current = articles.find(a => a.id === articleId);
+  if (!current) return;
+  const related = getRelatedArticles(current, 4);
+  grid.innerHTML = related.map(a => `
+    <a href="${a.url}" class="related-card">
+      <div class="related-category">${a.category}</div>
+      <h3>${a.title}</h3>
+      <p>${a.excerpt.slice(0, 100)}...</p>
+    </a>
+  `).join('');
+}
+
+// === SCROLL TO TOP ===
+function initScrollTop() {
+  const btn = document.getElementById('scrollTop');
+  if (!btn) return;
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+// === MOBILE NAV ===
+function initMobileNav() {
+  const toggle = document.getElementById('navToggle');
+  const nav = document.getElementById('nav');
+  if (!toggle || !nav) return;
+  toggle.addEventListener('click', () => {
+    nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', nav.classList.contains('open'));
+  });
+  document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
+// === INIT ===
 document.addEventListener('DOMContentLoaded', function() {
+  renderCategories();
+  renderTrending();
+  renderArticles(articles);
+  initMobileNav();
+  initScrollTop();
+
   const searchInput = document.getElementById('searchInput');
   const searchBtn = document.getElementById('searchBtn');
-  const articlesGrid = document.getElementById('articlesGrid');
+  const stats = document.getElementById('searchStats');
 
-  function filterArticles(query) {
-    const q = query.toLowerCase().trim();
-    const filtered = q === '' ? articles : articles.filter(a =>
-      a.title.toLowerCase().includes(q) ||
-      a.excerpt.toLowerCase().includes(q) ||
-      a.category.toLowerCase().includes(q)
-    );
-    renderArticles(filtered);
+  if (stats) stats.textContent = `Showing all ${articles.length} articles`;
+
+  if (searchBtn) {
+    searchBtn.addEventListener('click', performSearch);
   }
-
-  function renderArticles(items) {
-    if (!articlesGrid) return;
-    if (items.length === 0) {
-      articlesGrid.innerHTML = '<div class="no-results">No articles found. Try a different search term.</div>';
-      return;
-    }
-    articlesGrid.innerHTML = items.map(a => 
-      <article class="article-card">
-        <a href="${a.url}">
-          <img src="${a.image}" alt="${a.alt}" loading="lazy" width="600" height="400">
-        </a>
-        <div class="article-card-body">
-          <span class="category">${a.category}</span>
-          <h3><a href="${a.url}">${a.title}</a></h3>
-          <p>${a.excerpt}</p>
-          <span class="date">${a.date}</span>
-        </div>
-      </article>
-    ${''}).join('');
-  }
-
-  if (searchInput && searchBtn && articlesGrid) {
-    searchBtn.addEventListener('click', function() {
-      filterArticles(searchInput.value);
-    });
+  if (searchInput) {
     searchInput.addEventListener('keyup', function(e) {
-      if (e.key === 'Enter') {
-        filterArticles(searchInput.value);
+      if (e.key === 'Enter') performSearch();
+    });
+    searchInput.addEventListener('input', function() {
+      if (!this.value.trim()) {
+        performSearch();
       }
     });
-    renderArticles(articles);
   }
 
-  if (articlesGrid && !searchInput) {
-    renderArticles(articles);
+  // Handle search from homepage (preserve existing behavior)
+  if (searchInput && searchBtn) {
+    // Already handled above
+  } else if (searchInput && !searchBtn) {
+    searchInput.addEventListener('keyup', function(e) {
+      if (e.key === 'Enter') performSearch();
+    });
+  }
+
+  // If this is an article page, render related articles
+  const relatedGrid = document.getElementById('relatedGrid');
+  if (relatedGrid) {
+    const articleData = document.getElementById('articleData');
+    if (articleData) {
+      renderRelated(parseInt(articleData.getAttribute('data-id')));
+    }
   }
 });
+
