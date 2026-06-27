@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Sitemap: https://lifeinsurecompare.com/sitemap.xml
+Sitemap: https://toggi635.github.io/lifeinsurecompare/sitemap.xml
 
 # Disallow admin/internal paths
 Disallow: /assets/
